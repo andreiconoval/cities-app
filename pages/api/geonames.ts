@@ -1,8 +1,6 @@
 // pages/api/geonames.ts
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const GEONAMES_USERNAME = "helpdev13"; // Replace with your GeoNames username
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -15,7 +13,7 @@ export default async function handler(
 
   try {
     const response = await fetch(
-      `http://api.geonames.org/getJSON?geonameId=${geonameId}&username=${GEONAMES_USERNAME}`
+      `http://api.geonames.org/getJSON?geonameId=${geonameId}&username=${process.env.NEXT_PUBLIC_GEONAMES_USERNAME}`
     );
 
     if (!response.ok) {

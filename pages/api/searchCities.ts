@@ -15,7 +15,7 @@ export default async function handler(
     const response = await fetch(
       `http://api.geonames.org/searchJSON?q=${encodeURIComponent(
         query as string
-      )}&featureClass=P&maxRows=10&username=helpdev13`
+      )}&featureClass=P&maxRows=10&username=${process.env.NEXT_PUBLIC_GEONAMES_USERNAME}`
     );
 
     if (!response.ok) {

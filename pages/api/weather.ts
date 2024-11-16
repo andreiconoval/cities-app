@@ -2,8 +2,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { WeatherResponse } from "../../types/weather";
 
-const API_KEY = "a2b111a0159d55ece2967143a30e9149"; // Replace with your API key
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<WeatherResponse | { error: string }>
@@ -20,7 +18,7 @@ export default async function handler(
   try {
     // Fetch weather data
     const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_OPEN_WEATHER_API_KEY}&units=metric`
     );
 
     if (!response.ok) {

@@ -1,3 +1,4 @@
+import AuthCard from "@/components/auth-card";
 import { title, subtitle } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 
@@ -15,6 +16,7 @@ export default function IndexPage() {
           <div className={subtitle({ class: "mt-4" })}>
             Beautiful, fast and modern React UI library.
           </div>
+          <AuthCard />
         </div>
       </section>
     </DefaultLayout>

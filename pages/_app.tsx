@@ -6,16 +6,22 @@ import { useRouter } from "next/router";
 
 import { fontSans, fontMono } from "@/config/fonts";
 import "@/styles/globals.css";
+import { AuthProvider } from "@/hooks/useAuth";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) {
   const router = useRouter();
 
   return (
-    <NextUIProvider navigate={router.push}>
-      <NextThemesProvider>
-        <Component {...pageProps} />
-      </NextThemesProvider>
-    </NextUIProvider>
+    <AuthProvider>
+      <NextUIProvider navigate={router.push}>
+        <NextThemesProvider>
+          <Component {...pageProps} />
+        </NextThemesProvider>
+      </NextUIProvider>
+    </AuthProvider>
   );
 }
 
